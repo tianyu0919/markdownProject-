@@ -1,0 +1,51 @@
+<!--
+ * @Author: 归宿
+ * @Date: 2022-08-09 17:00:04
+ * @Description:
+-->
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+  <meta name="description" content="网站的描述内容。" />
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="Author" content="归宿" />
+  <meta name="Keywords" content="关键字" />
+  <title>网页标题</title>
+</head>
+
+<body>
+  <button id="button">请求</button>
+  <button id="button1">跳转</button>
+  <a href="./login.html" rel="noopener">Login1</a>
+  <a href="./login.html">Login2</a>
+  <a href="./login.html" rel="noreferrer">Login3</a>
+  <a href="/redirect" rel="noreferrer">redirect</a>
+</body>
+<script>
+  let oBtn = document.querySelector('#button');
+  let oBtn1 = document.querySelector('#button1');
+  oBtn.addEventListener('click', () => {
+    fetch('/list').then(res => res.json()).then(result => {
+      console.log(result);
+    }).catch(err => {
+      console.log(err);
+    })
+  })
+
+  oBtn.addEventListener('click', () => {
+    console.log('嘻嘻')
+  })
+
+  oBtn1.addEventListener('click', () => {
+    fetch('/redirect').then(res => res.json()).then(result => {
+      console.log(result);
+    }).catch(err => {
+      console.log(err);
+    })
+  })
+</script>
+
+</html>

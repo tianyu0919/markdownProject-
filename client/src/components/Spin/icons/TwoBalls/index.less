@@ -1,0 +1,43 @@
+@bgc: background-color;
+
+.TwoBallsBox {
+  position: relative;
+  width: 44px;
+
+  .TwoBallsItem {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: two-balls-pink 1.05s ease-in-out infinite;
+
+    &.pink {
+      @{bgc}: #ff4a69;
+      left: -2px;
+    }
+
+    &.blue {
+      @{bgc}: #1342ed;
+      right: -2px;
+      animation-name: two-balls-blue;
+    }
+  }
+
+  @keyframes two-balls-pink {
+    0% {
+      z-index: 1;
+    }
+
+    50% {
+      transform: translateX(calc(20px + 3 * 2px));
+    }
+  }
+
+  @keyframes two-balls-blue {
+
+    50% {
+      transform: translateX(calc(-20px - 3 * 2px));
+    }
+  }
+
+}

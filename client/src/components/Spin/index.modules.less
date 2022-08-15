@@ -1,0 +1,45 @@
+.spinBox {
+  height: initial;
+  position: relative;
+
+  .SpinLoadingBox {
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    z-index: 1;
+    width: calc(100% - 1px);
+    height: 100%;
+
+    .SpinLoadingContent {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+
+      .SpinLoadingIcon {
+        color: red;
+        height: 20px;
+      }
+
+      .SpinLoadingText {
+        text-align: center;
+        font-family: '幼圆';
+        // color: #dddddd;
+      }
+    }
+  }
+
+  .spinBoxContent {
+    height: inherit;
+    transition: opacity 0.3s;
+  }
+
+  .spinning {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
