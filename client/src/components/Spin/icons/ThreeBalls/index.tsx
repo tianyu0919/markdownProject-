@@ -6,8 +6,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import styles from './index.modules.less';
-
-
+// import './index.less';
 export default function ThreeBalls() {
   return (
     <div className={classNames(styles.threeBallsBox)}>
@@ -18,6 +17,15 @@ export default function ThreeBalls() {
       <div className={classNames(styles.shadow)}></div>
       <div className={classNames(styles.shadow)}></div>
     </div>
+
+    // <div className={classNames('threeBallsBox')}>
+    //   <div className={classNames('circle')}></div>
+    //   <div className={classNames('circle')}></div>
+    //   <div className={classNames('circle')}></div>
+    //   <div className={classNames('shadow')}></div>
+    //   <div className={classNames('shadow')}></div>
+    //   <div className={classNames('shadow')}></div>
+    // </div>
   )
 }
 

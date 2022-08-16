@@ -18,6 +18,7 @@ const defaultProps = {
 export default function Spin(props: SpinProps) {
   const { children, spinning, style, className, tip, type, LoadingContentHeight } = { ...defaultProps, ...props };
   const SpinIcon = themes[type] || <>type错误</>;
+  const { height } = SpinIcon as unknown as { height: string };
   console.log(LoadingContentHeight)
 
   return (
@@ -25,7 +26,7 @@ export default function Spin(props: SpinProps) {
       {
         spinning ? <div className={classNames(styles.SpinLoadingBox)} style={{ height: LoadingContentHeight }}>
           <div className={classNames(styles.SpinLoadingContent)}>
-            <div className={classNames(styles.SpinLoadingIcon)} style={{ height: `${SpinIcon.height}px` }}>
+            <div className={classNames(styles.SpinLoadingIcon)} style={{ height: `${height}px` }}>
               <SpinIcon />
             </div>
             <div className={classNames(styles.SpinLoadingText)}>

@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import { SelectInfo } from 'rc-menu/lib/interface';
 import request from '@src/request';
 import Spin from '@components/Spin';
+import store from '@src/store';
 
 
 interface MenuProps {
@@ -23,6 +24,7 @@ const LeftMenu: React.FC<MenuProps> = (props): React.ReactElement => {
 
   const [showSpin, setShowSpin] = useState(false);
   const [selectedKey, setSelectedKey] = useState(["Home"]);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
 
   const selectedFn = (props: SelectInfo): void => {
     const { selectedKeys } = props;
@@ -48,6 +50,11 @@ const LeftMenu: React.FC<MenuProps> = (props): React.ReactElement => {
 
   useEffect(() => {
     getMenuList();
+
+    store.subscribe(() => {
+      const { showMenu } = store.getState();
+      setShowMenu(showMenu);
+    })
   }, []);
 
   return (
@@ -59,13 +66,14 @@ const LeftMenu: React.FC<MenuProps> = (props): React.ReactElement => {
       </div>
       <div className={classNames(styles.menu_container_content)}>
         {/* <Spin spinning={showSpin} tip="Loading..." wrapperClassName={'xxxxx'}> */}
-        <Spin spinning={showSpin} tip="Loading..." LoadingContentHeight={'calc(100vh - var(--titleHeight))'} style={{ height: 'calc(100vh - var(--titleHeight))' }} type="threeBalls">
+        <Spin spinning={showSpin} type="threeBalls" tip="Loading..." LoadingContentHeight={'calc(100vh - var(--titleHeight))'} style={{ height: 'calc(100vh - var(--titleHeight))' }}>
           <Menu
             mode="inline"
             onSelect={selectedFn}
             items={items}
             selectedKeys={selectedKey}
             style={{ height: '100%' }}
+            inlineCollapsed={showMenu}
           />
         </Spin>
       </div>

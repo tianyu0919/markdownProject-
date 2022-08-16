@@ -44,8 +44,9 @@ module.exports = {
           },
         },
       },
+      // * CSS Module 的配置
       {
-        test: /\.(c|le)ss$/,
+        test: /\.modules\.(c|le)ss$/,
         exclude: [/node_modules/],
         use: [
           {
@@ -58,6 +59,33 @@ module.exports = {
               modules: {
                 localIdentName: NODE_ENV === 'development' ? "[path][name]__[local]--[hash:8]" : '[hash:8]'
               }
+            },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              postcssOptions: {
+                plugins: [
+                  ["autoprefixer"]
+                ]
+              }
+            }
+          },
+          'less-loader'
+        ]
+      },
+      // * 普通样式文的配置
+      {
+        test: /\.(c|le)ss$/,
+        exclude: [/node_modules/, /\.modules\.(c|le)ss$/],
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
             },
           },
           {
@@ -103,7 +131,6 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: NODE_ENV === 'development' ? 'css/[name].css' : 'css/[name]_[hash:8].css', // * 如果是本地开发的话不添加 hash 值，给css名字添加 hash contenthash chunckhash 都会使css文件不重新渲染。
-
     }),
     new CleanWebpackPlugin()
   ]
