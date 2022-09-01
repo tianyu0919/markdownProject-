@@ -19,7 +19,7 @@ let obj2_1: object = new String('xx'); // * success 这种就对了
 ```
 
 ### Object 类型
-&emsp;&emsp;<b>在 `typescript` 中 `Object` 类型是所有 `Object` 类的实例的类型，他包括了原始值。</b>它由以下两个接口来定义：
+&emsp;&emsp;<b>在 `typescript` 中 `Object` 类型是所有 `Object` 类的实例的类型，他包括了原始值，所以非必要情况下不使用跟 `unknown` 没区别。</b>它由以下两个接口来定义：
 
 &emsp;&emsp;`Object` 接口定义了 `Object.prototype` 原型对象上的属性；
 &emsp;&emsp;`ObjectConstructor` 接口定义了 `Object` 类的属性。
