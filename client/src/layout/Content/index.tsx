@@ -38,10 +38,9 @@ export default function Content(props: ContentProps) {
     }).catch(err => {
       console.log(err);
     }).finally(() => {
-      setTimeout(() => {
-        setShowSpin(false);
-
-      }, 3000)
+      // setTimeout(() => {
+      setShowSpin(false);
+      // }, 3000)
     })
   }
 
