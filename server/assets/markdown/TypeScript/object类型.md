@@ -1,9 +1,3 @@
-<!--
- * @Author: 归宿
- * @Date: 2022-09-01 18:26:38
- * @Description: 
--->
-
 # 前言
 
 &emsp;&emsp;在 `typescript` 中，有 `{}` `object` 和 `Object` 那他们的类型都是有什么区别呢？
@@ -24,7 +18,8 @@ let obj2_1: object = new String('xx'); // * success 这种就对了
 ```
 
 ### Object 类型
-&emsp;&emsp;<b>在 `typescript` 中 `Object` 类型是所有 `Object` 类的实例的类型，他包括了原始值，所以非必要情况下不使用跟 `unknown` 没区别。</b>它由以下两个接口来定义：
+
+&emsp;&emsp;**在 `typescript` 中 `Object` 类型是所有 `Object` 类的实例的类型，他包括了原始值，所以非必要情况下不使用跟 `unknown` 没区别。** 它由以下两个接口来定义：
 
 &emsp;&emsp;`Object` 接口定义了 `Object.prototype` 原型对象上的属性；
 &emsp;&emsp;`ObjectConstructor` 接口定义了 `Object` 类的属性。
@@ -57,6 +52,7 @@ interface ObjectConstructor {
 ```
 
 &emsp;&emsp;`Object` 类的所有实例都继承了 `Object` 接口中的所有属性。我们可以看到，如果我们创建一个返回其参数的函数：
+
 &emsp;&emsp;传入一个 `Object` 对象的实例，它总是会满足该函数的返回类型 —— 即要求返回值包含一个 `toString()` 方法。
 
 ```typescript
