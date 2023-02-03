@@ -11,36 +11,36 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   entry: {
-    index: Path.resolve(__dirname, '../index.tsx'),
+    index: Path.resolve(__dirname, "../index.tsx"),
   },
   output: {
-    path: Path.resolve(__dirname, '../dist'),
-    filename: 'js/[name]_[hash:8].js',
-    publicPath: '/'
+    path: Path.resolve(__dirname, "../dist"),
+    filename: "js/[name]_[hash:8].js",
+    publicPath: "/",
   },
   resolve: {
     alias: {
-      "@src": Path.resolve(__dirname, '../src'),
-      "@components": Path.resolve(__dirname, '../src/components'),
-      "@assets": Path.resolve(__dirname, '../src/assets'),
-      "@containers": Path.resolve(__dirname, '../src/containers'),
-      "@layout": Path.resolve(__dirname, '../src/layout'),
-      "@ltyDesign": Path.resolve(__dirname, '../src/ltyDesign'),
+      "@src": Path.resolve(__dirname, "../src"),
+      "@components": Path.resolve(__dirname, "../src/components"),
+      "@assets": Path.resolve(__dirname, "../src/assets"),
+      "@containers": Path.resolve(__dirname, "../src/containers"),
+      "@layout": Path.resolve(__dirname, "../src/layout"),
+      "@ltyDesign": Path.resolve(__dirname, "../src/ltyDesign"),
     },
-    extensions: ['.tsx', '.ts', '.jsx', '.js']
+    extensions: [".tsx", ".ts", ".jsx", ".js"],
   },
   module: {
     rules: [
       {
         test: /\.(js|ts|jsx|tsx)$/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             presets: [
               "@babel/preset-env",
               "@babel/preset-react",
-              "@babel/preset-typescript"
-            ]
+              "@babel/preset-typescript",
+            ],
           },
         },
       },
@@ -53,26 +53,27 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               importLoaders: 2,
               modules: {
-                localIdentName: NODE_ENV === 'development' ? "[path][name]__[local]--[hash:8]" : '[hash:8]'
-              }
+                localIdentName:
+                  NODE_ENV === "development"
+                    ? "[path][name]__[local]--[hash:8]"
+                    : "[hash:8]",
+              },
             },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: [
-                  ["autoprefixer"]
-                ]
-              }
-            }
+                plugins: [["autoprefixer"]],
+              },
+            },
           },
-          'less-loader'
-        ]
+          "less-loader",
+        ],
       },
       // * 普通样式文的配置
       {
@@ -80,30 +81,35 @@ module.exports = {
         exclude: [/node_modules/, /\.modules\.(c|le)ss$/],
         use: [
           {
-            loader: 'style-loader',
+            loader: "style-loader",
           },
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
-              importLoaders: 2
+              importLoaders: 2,
             },
           },
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: [
-                  ["autoprefixer"]
-                ]
-              }
-            }
+                plugins: [["autoprefixer"]],
+              },
+            },
           },
-          'less-loader'
-        ]
+          "less-loader",
+        ],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ["style-loader", "css-loader"],
+      },
+      {
+        test: /\.ttf$/,
+        type: "asset/resource",
+        generator: {
+          outputPath: "fonts",
+        },
       },
       {
         test: /\.md$/,
@@ -113,7 +119,7 @@ module.exports = {
         // }
         // use: [
         //   { loader: "html-loader" },
-        //   { 
+        //   {
         //     loader: 'remark-loader',
         //     options: {
         //       remarkOptions: {
@@ -122,16 +128,19 @@ module.exports = {
         //     }
         //   },
         // ]
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: Path.resolve(__dirname, '../public/index.html')
+      template: Path.resolve(__dirname, "../public/index.html"),
     }),
     new MiniCssExtractPlugin({
-      filename: NODE_ENV === 'development' ? 'css/[name].css' : 'css/[name]_[hash:8].css', // * 如果是本地开发的话不添加 hash 值，给css名字添加 hash contenthash chunckhash 都会使css文件不重新渲染。
+      filename:
+        NODE_ENV === "development"
+          ? "css/[name].css"
+          : "css/[name]_[hash:8].css", // * 如果是本地开发的话不添加 hash 值，给css名字添加 hash contenthash chunckhash 都会使css文件不重新渲染。
     }),
-    new CleanWebpackPlugin()
-  ]
-}
+    new CleanWebpackPlugin(),
+  ],
+};

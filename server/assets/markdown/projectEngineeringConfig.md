@@ -18,7 +18,7 @@
 }
 ```
 
-## [pretty-quick](https://github.com/azz/pretty-quick)
+## [pretty-quick](https://github.com/azz/pretty-quick?_blank)
 
 简述：配合 `husky` 和 `prettier` 一起使用，在 `husky` 的 `pre-commit` 钩子中使用 `npx pretty-quick --staged` 命令根据项目中的 `prettier` 配置文件进行暂存文件的代码格式化。
 

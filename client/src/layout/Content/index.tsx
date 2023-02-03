@@ -18,8 +18,8 @@ import {
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import RemarkGfm from "remark-gfm"; // * 将链接转换为可以点击的
 import RemarkHTML from "remark-html";
-import RemarkKBD from "remark-kbd";
-import rehypeRaw from 'rehype-raw';
+import rehypeRaw from "rehype-raw";
+import RemarkEmoji from "remark-emoji";
 import request from "@src/request";
 
 import ss from "./index.less";
@@ -73,7 +73,16 @@ export default function Content(props: ContentProps) {
           LoadingContentHeight="calc(100vh - 20px)"
         >
           <ReactMarkdown
-            remarkPlugins={[RemarkHTML, RemarkGfm]}
+            remarkPlugins={[
+              RemarkHTML,
+              RemarkGfm,
+              [
+                RemarkEmoji,
+                {
+                  emoticon: true,
+                },
+              ],
+            ]}
             skipHtml={true}
             rehypePlugins={[rehypeRaw]}
             components={{
