@@ -7,6 +7,7 @@ const Path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WebpackBar = require('webpackbar')
 const NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
@@ -132,6 +133,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new WebpackBar(),
     new HtmlWebpackPlugin({
       template: Path.resolve(__dirname, "../public/index.html"),
     }),
