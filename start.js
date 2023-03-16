@@ -7,5 +7,9 @@ const http = require('http');
 
 http.createServer((req, res) => {
   process.title = '程序员成长指北测试进程';
+  res.writeHead(200, {
+    'content-type': 'text/plain; charset=utf-8'
+  });
+
   res.end(JSON.stringify(process.title));
 }).listen(3300);
