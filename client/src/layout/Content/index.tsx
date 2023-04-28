@@ -94,7 +94,7 @@ export default function Content(props: ContentProps) {
                   <SyntaxHighlighter
                     showLineNumbers={true}
                     lineNumberStyle={{ color: "#ccc", fontSize: 10, minWidth: '33px' }} // 左侧行数的样式
-                    style={oneDark as any}
+                    style={oneLight as any}
                     language={"tsx"}
                     PreTag="div"
                     {...props}
