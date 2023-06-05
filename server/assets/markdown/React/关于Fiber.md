@@ -1,3 +1,8 @@
+<!--
+ * @Author: tianyu
+ * @Date: 2023-05-18 17:51:57
+ * @Description: 
+-->
 # 关于React的Fiber
 
 react 16版本之前是 Stack Reconciler 栈调和器，栈调和器是没办法中断的。
@@ -21,5 +26,6 @@ React Fiber 的目的就是堆栈的重新实现，专门用于React组件。可
 
 
 ## requestIdleCallback
+
 
 ## requestAnimationFrame
